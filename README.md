@@ -1,6 +1,6 @@
-# Ejercicios del modulo de Entorno Servidor
+# Ejercicios del módulo de Entorno Servidor
   
-En este repositorio se encuentran las entregas referentes a spring del modulo de entorno servidor del grado superior de desarrollo de aplicación web.
+En este repositorio se encuentran las entregas referentes a spring del módulo de entorno servidor del grado superior de desarrollo de aplicación web.
 
 #### Proyectos
   - [HolaMundo!](./hola_mundo/src/main/java/com/hola_mundo)
