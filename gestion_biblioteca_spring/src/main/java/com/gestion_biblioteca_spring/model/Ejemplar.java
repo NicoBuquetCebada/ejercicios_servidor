@@ -1,10 +1,8 @@
 package com.gestion_biblioteca_spring.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -16,24 +14,30 @@ import java.util.Set;
 public class Ejemplar {
     @Id
     @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "isbn", nullable = false)
 	@JsonBackReference("ejemplar-managed")
+    @JsonIgnore
     private Libro isbn;
 
-    @ColumnDefault("'DISPONIBLE'")
-    @Lob
     @Column(name = "estado")
+    @Pattern(regexp = "^(DISPONIBLE|PRESTADO|DAÑADO)$")
     private String estado;
 
 	@OneToMany(mappedBy = "ejemplar")
 	@JsonManagedReference("ejemplar-prestamo-managed")
 	private Set<Prestamo> prestamos = new LinkedHashSet<>();
 
-	public Set<Prestamo> getPrestamos() {
+    @JsonProperty("isbn")
+    public String getIsbnString() {
+        return  isbn.getIsbn();
+    }
+
+    public Set<Prestamo> getPrestamos() {
 		return prestamos;
 	}
 

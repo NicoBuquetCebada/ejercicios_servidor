@@ -18,7 +18,6 @@ public class Prestamo {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "usuario_id", nullable = false)
-    @JsonBackReference("user-managed")
     private Usuario usuario;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
