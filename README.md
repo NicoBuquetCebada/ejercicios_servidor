@@ -1,4 +1,4 @@
-# Ejercicios del módulo de Entorno Servidor
+# Ejercicios de Spring del módulo de Entorno Servidor
   
 En este repositorio se encuentran las entregas referentes a spring del módulo de entorno servidor del grado superior de desarrollo de aplicación web.
 
